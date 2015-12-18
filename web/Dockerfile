@@ -3,7 +3,7 @@ MAINTAINER Mike Scott <mike.scott@sqs.com>
 
 ENV APP_DIR /usr/app
 
-# Switch ToAPP_DIR
+# Switch To APP_DIR
 RUN mkdir -p $APP_DIR
 WORKDIR $APP_DIR
 
