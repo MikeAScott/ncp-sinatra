@@ -2,6 +2,7 @@ require 'sinatra'
 
 configure do
   enable :sessions
+  set :bind, '0.0.0.0'
 end
 
 helpers do
