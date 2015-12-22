@@ -1,8 +1,13 @@
 require 'sinatra'
+require 'mongo_mapper'
+require 'json'
+require_relative 'payment'
 
 configure do
   enable :sessions
   set :bind, '0.0.0.0'
+  MongoMapper.connection = Mongo::Connection.new(ENV['MONGODB_URI'], 27017)
+  MongoMapper.database = 'ncp'
 end
 
 helpers do
@@ -38,5 +43,14 @@ get '/logout' do
   erb "<div class='alert alert-message'>Logged out</div>"
 end
 
+get '/payments/add' do
+  payment = Payment.new( :vehicle => 'ABC123', :name_on_card => 'Mini Driver')
+  payment.save
+end
 
+get '/payments' do
+  payments = Payment.all()
+
+  payments.to_json
+end
 
