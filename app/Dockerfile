@@ -13,6 +13,6 @@ COPY Gemfile.lock $APP_DIR
 COPY . $APP_DIR
 RUN bundle install
 
-CMD bundle exec ruby app.rb
+CMD bundle exec rackup -p 8081 -o 0.0.0.0
 
-EXPOSE 4567
+EXPOSE 8081
